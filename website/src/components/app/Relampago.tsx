@@ -5,8 +5,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { CruzIcon, EyeIcon, FlashIcon, HeartIcon } from "@/shared/icons";
-import StarRating from "@/shared/components/animation/stars/Stars";
-// import "./globals.css"; // Importar los estilos personalizados
+import StarRating from "@/shared/components/stars/Stars";
 
 export const Relampago = () => {
   const productos = [
@@ -86,8 +85,8 @@ export const Relampago = () => {
       <Swiper
         modules={[Navigation]}
         navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+          nextEl: ".swiper-button-next1",
+          prevEl: ".swiper-button-prev1",
         }}
         loop={false}
         spaceBetween={20}
@@ -96,7 +95,7 @@ export const Relampago = () => {
       >
         {productos.map((producto, index) => (
           <SwiperSlide key={index}>
-            <div className="group relative bg-white border rounded-lg shadow-md p-4">
+            <div className="group relative bg-white border rounded-lg shadow-md p-4 ">
               {/* Etiqueta de descuento */}
               <div className="flex justify-between items-start">
                 <p className="inline-flex bg-primary text-white text-xs font-semibold px-2 py-1 rounded-md whitespace-nowrap">
@@ -151,10 +150,10 @@ export const Relampago = () => {
       </Swiper>
 
       {/* Botones de navegación personalizados */}
-      <div className="swiper-button-prev custom-prev absolute left-[-25px] top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full w-12 h-12 flex items-center justify-center shadow-lg cursor-pointer z-10">
+      <div className="swiper-button-prev1 custom-prev absolute left-[-25px] top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full w-12 h-12 flex items-center justify-center shadow-lg cursor-pointer z-10">
         ❮
       </div>
-      <div className="swiper-button-next custom-next absolute right-[-25px] top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full w-12 h-12 flex items-center justify-center shadow-lg cursor-pointer z-10">
+      <div className="swiper-button-next1 custom-next absolute right-[-25px] top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full w-12 h-12 flex items-center justify-center shadow-lg cursor-pointer z-10">
         ❯
       </div>
     </div>

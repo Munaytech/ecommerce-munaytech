@@ -1,0 +1,28 @@
+/* Ocultar las flechas por defecto de Swiper */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
+}
+
+/* Ajuste de estilo para las flechas */
+.custom-prev,
+.custom-next {
+  transition: all 0.3s ease-in-out;
+  opacity: 0.8;
+}
+
+.custom-prev:hover,
+.custom-next:hover {
+  background-color: #d83f50;
+  color: white;
+  opacity: 1;
+}
+
+/* Ajustar la separación de las flechas */
+.custom-prev {
+  left: -30px;
+}
+
+.custom-next {
+  right: -30px;
+}
