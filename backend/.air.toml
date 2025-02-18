@@ -1,0 +1,13 @@
+# Configuración de Air para Windows
+[build]
+  cmd = "go build -o tmp/main.exe cmd/server/main.go"  # Compila el ejecutable con extensión .exe
+  bin = "tmp/main.exe"                                # Especifica el binario a ejecutar (.exe en Windows)
+  include_ext = ["go", "env"]                         # Extensiones de archivos que deben ser monitoreados
+  exclude_dir = ["uploads", "tmp", "postgres-data"]
+  delay = 1000                                        # Tiempo de espera antes de reiniciar (en milisegundos)
+
+[log]
+  time = true
+
+[misc]
+  clean_on_exit = true

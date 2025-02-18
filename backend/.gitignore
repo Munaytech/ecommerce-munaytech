@@ -1,0 +1,6 @@
+
+
+.env
+*.sum
+*/uploads
+*/tmp
