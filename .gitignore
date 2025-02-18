@@ -1,0 +1,7 @@
+
+
+.env
+*.sum
+*/uploads
+*/tmp
+*/postgres-data
