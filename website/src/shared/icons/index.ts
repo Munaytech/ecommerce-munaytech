@@ -4,3 +4,7 @@ export { HeartIcon } from "./HeartIcon";
 export { FlashIcon } from "./FlashIcon";
 export { CategoriaIcon } from "./CategoriaIcon";
 export { InsigniaIcon } from "./InsigniaIcon";
+export { BagIcon } from "./Bagicon";
+export { ProfileIcon } from "./ProfileIcon";
+export { SoporteIcon } from "./SoporteIcon";
+export { FlechaIcon } from "./FlechaIcon";

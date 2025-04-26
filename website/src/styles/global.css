@@ -5,6 +5,7 @@
 @import "./text.css";
 @import "./shadow.css";
 @import "./AnimationStyle.css";
+@import "./BackGround.css";
 
 :root {
   /* @apply bg-white bg-gradient-to-t from-[rgba(242,242,242,0.23)] to-[rgba(242,242,242,0.23)] */
