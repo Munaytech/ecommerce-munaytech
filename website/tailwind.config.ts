@@ -12,6 +12,9 @@ export default {
         primary: "#D23F57",
         secundary: "#2B3445",
         tertiary: "#4B566B",
+
+        quaternary: "#4B566B",
+
         // background: "var(--background)",
         // foreground: "var(--foreground)",
       },
