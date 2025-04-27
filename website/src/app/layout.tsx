@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/global.css";
+import { Cabecera } from "@/components/layout/Cabecera";
+import { SearchLayout } from "@/components/layout/SearchLayout";
+import { CategoriasLayout } from "@/components/layout/CategoriasLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +30,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-publicSans background-gradient  `}
       >
+
+        <Cabecera />
+        <SearchLayout />
+        <CategoriasLayout />
         {children}
       </body>
     </html>

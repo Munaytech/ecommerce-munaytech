@@ -1,0 +1,1 @@
+export { FashionIcon } from "./FashionIcon";

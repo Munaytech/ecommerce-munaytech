@@ -44,8 +44,8 @@ export const Rating = () => {
         </p>
       </div>
       <div className="borderone flex gap-4 justify-around">
-        {productos.map((producto) => (
-          <div key={producto.name} className="">
+        {productos.map((producto, index) => (
+          <div key={index} className="">
             <div className="mb-2 group">
               <Image
                 src={producto.image}
