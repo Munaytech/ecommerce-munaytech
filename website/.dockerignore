@@ -1,0 +1,14 @@
+# Evitar subir dependencias locales
+node_modules
+.next
+out
+.git
+.gitignore
+Dockerfile.dev
+Dockerfile
+README.md
+.env*
+npm-debug.log
+yarn-error.log
+.vscode
+*.log
