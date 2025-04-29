@@ -22,7 +22,7 @@ jobs:
       uses: PaulHatch/semantic-version@v4.0.3
       with: 
         major_pattern: "major:"
-        minor_pattern: "feat:"
+        minor_pattern: "minor:"
         format: "${major}.${minor}.${patch}-${increment}"
       id: version
 
@@ -37,15 +37,15 @@ jobs:
       env: 
         NEW_VERSION: ${{ steps.version.outputs.version }}
       run: |
-        docker build -t chriskira03/docker-graphql:$NEW_VERSION ./website
-        docker build -t chriskira03/docker-graphql:latest ./website
+        docker build -t munaytech/ecommerce-munaytech:$NEW_VERSION ./website
+        docker build -t munaytech/ecommerce-munaytech:latest ./website
 
     - name: Push Docker Image
       env: 
         NEW_VERSION: ${{ steps.version.outputs.version }}
       run: |
-        docker push chriskira03/docker-graphql:$NEW_VERSION
-        docker push chriskira03/docker-graphql:latest
+        docker push munaytech/ecommerce-munaytech:$NEW_VERSION
+        docker push munaytech/ecommerce-munaytech:latest
         
     # - name: Build the Docker image
     #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
