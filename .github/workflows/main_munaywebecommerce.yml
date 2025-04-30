@@ -29,7 +29,7 @@ jobs:
           context: ./website
           file: ./website/Dockerfile
           push: true
-          tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_789a3c510f0f40bc8f44bfb147f9b417 }}/munaytech/ecommerce-munaytech:${{ github.sha }}
+          tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_789a3c510f0f40bc8f44bfb147f9b417 }}/ecommerce-munaytech:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -46,4 +46,4 @@ jobs:
           app-name: 'munaywebecommerce'
           slot-name: 'production'
           publish-profile: ${{ secrets.AzureAppService_PublishProfile_89ae398b27d6438ab44ee8c76a59c37e }}
-          images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_789a3c510f0f40bc8f44bfb147f9b417 }}/munaytech/ecommerce-munaytech:${{ github.sha }}'
+          images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_789a3c510f0f40bc8f44bfb147f9b417 }}/ecommerce-munaytech:${{ github.sha }}'
