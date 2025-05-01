@@ -36,29 +36,32 @@ export const Rating = () => {
     },
   ];
   return (
-    <div className="w-full max-w-[1500px] mx-auto relative mt-10">
-      <div className="flex items-center">
+    <div className="w-full max-w-[1500px] mx-auto relative mt-10 px-4">
+      <div className="flex items-center  mb-4">
         <InsigniaIcon />
         <p className="text-[25px] leading-9 font-semibold text-secundary">
           Top Ratings
         </p>
       </div>
-      <div className="borderone flex gap-4 justify-around">
+      <div className="borderone grid grid-cols-6 justify-around">
         {productos.map((producto, index) => (
-          <div key={index} className="">
+          <div
+            key={index}
+            className=" col-span-3 md:col-span-1 flex flex-col items-center justify-center  px-8"
+          >
             <div className="mb-2 group">
               <Image
                 src={producto.image}
                 alt="Image"
                 width={300}
                 height={300}
-                className="rounded-xl transition duration-300 group-hover:brightness-90"
+                className="sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-xl transition duration-300 group-hover:brightness-90"
               />
             </div>
-            <p className="text-secundary text-[14px] font-medium leading-6 mb-1">
+            <p className="text-secundary text-[14px] font-medium leading-6 mb-1 text-left w-full">
               {producto.name}
             </p>
-            <p className="text-primary text-[14px] font-medium leading-6">
+            <p className="text-primary text-[14px] font-medium leading-6 text-left w-full">
               {producto.price}
             </p>
           </div>

@@ -26,20 +26,20 @@ export const Oferta = () => {
     },
   ];
   return (
-    <div className="w-[1500px] m-auto relative  ">
+    <div className="max-w-[1500px] m-auto relative  ">
       <div>
         <AnimationSwiper>
           {ofertas.map((oferta, index) => (
             <SwiperSlide key={index}>
-              <div className=" relative grid grid-cols-3 gap-6ss h-[350px] justify-center">
-                <div className="col-span-1">
-                  <p className="text-supertitle mb-8">{oferta.title}</p>
+              <div className=" relative grid grid-cols-3 gap-6ss  justify-center px-4">
+                <div className="col-span-3 md:col-span-1 text-secundary">
+                  <p className="text-4xl font-semibold mb-8">{oferta.title}</p>
                   <p className="text-paragraph mb-6">{oferta.description}</p>
                   <button className="text-sm bg-primary rounded-xl px-8 py-3 text-white">
                     Shop Now
                   </button>
                 </div>
-                <div className="relative col-span-2">
+                <div className="relative col-span-3 md:col-span-2 h-[350px]">
                   <Image
                     src={oferta.image}
                     alt="hero"

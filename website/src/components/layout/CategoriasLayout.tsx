@@ -4,7 +4,7 @@ import DesplegableLayout from "./DesplegableLayout";
 
 export const CategoriasLayout = () => {
   return (
-    <div>
+    <div className="hidden md:block">
       <div className="w-[1500px] m-auto my-2 flex items-center justify-between ">
         <div>
           <AccordionLayout />

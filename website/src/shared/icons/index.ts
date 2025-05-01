@@ -13,3 +13,8 @@ export { Facebook } from "./Facebook";
 export { Instagram } from "./Instagram";
 export { BazarIcon } from "./BazarIcon";
 export { OpcionIcon } from "./OpcionIcon";
+export { UserIcon } from "./UserIcon";
+export { BolsoIcon } from "./BolsoIcon";
+export { SumaIcon } from "./SumaIcon";
+export { LupaIcon } from "./LupaIcon";
+export { MenuIcon } from "./MenuIcon";

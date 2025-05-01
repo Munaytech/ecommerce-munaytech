@@ -17,9 +17,9 @@ export default function Home() {
       <Relampago />
       <Categoria />
       <Rating />
-      <Arrivals />
+      {/* <Arrivals />
       <Descuentos />
-      <Marcas />
+      <Marcas /> */}
     </div>
   );
 }

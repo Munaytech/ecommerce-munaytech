@@ -75,8 +75,8 @@ export const Relampago = () => {
   ];
 
   return (
-    <div className="w-full max-w-[1500px] mx-auto relative">
-      <div className="flex items-center">
+    <div className="w-full max-w-[1500px] px-4 md:mx-auto relative">
+      <div className="flex items-center  mb-4">
         <FlashIcon />
         <p className="text-[25px] leading-9 font-semibold text-secundary">
           Flash Deals
@@ -92,6 +92,20 @@ export const Relampago = () => {
         spaceBetween={20}
         slidesPerView={4}
         className="relative"
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+          1280: {
+            slidesPerView: 4,
+          },
+        }}
       >
         {productos.map((producto, index) => (
           <SwiperSlide key={index}>
@@ -150,10 +164,10 @@ export const Relampago = () => {
       </Swiper>
 
       {/* Botones de navegación personalizados */}
-      <div className="swiper-button-prev1 custom-prev absolute left-[-25px] top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full w-12 h-12 flex items-center justify-center shadow-lg cursor-pointer z-10">
+      <div className="hidden swiper-button-prev1 custom-prev absolute left-[-25px] top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full w-12 h-12  md:flex items-center justify-center shadow-lg cursor-pointer z-10">
         ❮
       </div>
-      <div className="swiper-button-next1 custom-next absolute right-[-25px] top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full w-12 h-12 flex items-center justify-center shadow-lg cursor-pointer z-10">
+      <div className="hidden swiper-button-next1 custom-next absolute right-[-25px] top-1/2 transform -translate-y-1/2 bg-white border border-gray-300 rounded-full w-12 h-12 md:flex items-center justify-center shadow-lg cursor-pointer z-10">
         ❯
       </div>
     </div>
