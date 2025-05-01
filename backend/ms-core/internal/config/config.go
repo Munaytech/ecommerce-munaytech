@@ -17,6 +17,7 @@ type Config struct {
     DBName   string
     DBSSL    string
     DBUrl    string
+    Prefix   string
 }
 
 func LoadConfig() *Config {
@@ -31,11 +32,12 @@ func LoadConfig() *Config {
     }
 
     dbUser := os.Getenv("DB_USER")
-    dbPass := os.Getenv("DB_PASSWORD")
+    dbPass := os.Getenv("DB_PASS")
     dbHost := os.Getenv("DB_HOST")
     dbPort := os.Getenv("DB_PORT")
     dbName := os.Getenv("DB_NAME")
     dbSSL := os.Getenv("DB_SSLMODE")
+    prefix := os.Getenv("PREFIX")
 
     if dbUser == "" || dbPass == "" || dbHost == "" || dbPort == "" || dbName == "" {
         log.Fatal("Las variables de entorno de la base de datos no están completamente configuradas")
@@ -52,5 +54,6 @@ func LoadConfig() *Config {
         DBName: dbName,
         DBSSL:  dbSSL,
         DBUrl:  dbUrl,
+        Prefix: prefix,
     }
 }

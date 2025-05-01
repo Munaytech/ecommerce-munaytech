@@ -1,9 +1,10 @@
+
 package main
 
 import (
-	"backend/internal/config"
-	"backend/internal/server"
 	"log"
+	"ms-core/internal/config"
+	"ms-core/internal/server"
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -24,7 +25,6 @@ func main() {
     gin.SetMode(ginMode)
 
     cfg := config.LoadConfig()
-    
     srv := server.New(cfg)
 
     log.Printf("Servidor iniciado en el puerto %s en modo %s", cfg.Port, ginMode)

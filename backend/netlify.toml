@@ -1,0 +1,12 @@
+[build]
+  base = "ms-ia"
+  publish = "ms-ia"
+  command = "go mod tidy && go build -o main ./cmd/server"
+
+[build.environment]
+  GO_VERSION = "1.20"
+
+[[redirects]]
+  from = "/*"
+  to = "/main"
+  status = 200

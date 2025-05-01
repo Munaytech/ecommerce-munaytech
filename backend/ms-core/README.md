@@ -1,4 +1,4 @@
-# backend
+# ms-core
 
 MICROSERVICIO PARA CARGA DE ARCHIVOS
 
@@ -7,7 +7,7 @@ MICROSERVICIO PARA CARGA DE ARCHIVOS
 Install my-project with go
 
 ```bash
-  go mod init backend
+  go mod init ms-core
 ```
 
 Install dependencies

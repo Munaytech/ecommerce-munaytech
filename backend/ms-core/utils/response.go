@@ -3,7 +3,6 @@ package utils
 import (
 	"fmt"
 	"net/http"
-	"runtime/debug"
 
 	"github.com/gin-gonic/gin"
 	"github.com/pkg/errors"
@@ -14,11 +13,16 @@ type APIResponse struct {
     Status  int         `json:"status"`
     Message string      `json:"message"`
     Data    interface{} `json:"data,omitempty"`
+    Success bool        `json:"success"`
+    Ok     bool        `json:"ok"`
 }
 
 type ErrorResponse struct {
-    Error string `json:"error"`
+    Error error `json:"error"`
     Stack string `json:"stack"`
+    Status int `json:"status"`
+    Message string `json:"message"`
+
 }
 
 // Success genera una respuesta de éxito
@@ -35,66 +39,65 @@ func Success(c *gin.Context, status int, message string, data interface{}) {
         Status:  status,
         Message: message,
         Data:    data,
+        Success: true,
+        Ok: true,
     })
 }
-
-func SuccessStatusOK(c *gin.Context, message string, data interface{}) {
-    Success(c, StatusSuccess, message, data)
-}
-
-func SuccessStatusCreated(c *gin.Context, message string, data interface{}) {
-    Success(c, StatusCreated, message, data)
-}
-
-func SuccessStatusNoContent(c *gin.Context, message string) {
-    Success(c, StatusNoContent, message, nil)
+func Error(c *gin.Context, status int, message string, err error) {
+    c.Set("error", fmt.Sprintf("%s | %+v", message, err)) // el %+v imprime el stack interno si lo tiene
+    c.JSON(status, gin.H{
+        "error":   true,
+        "message": message,
+    })
 }
 
 // Error genera una respuesta de error
-func Error(c *gin.Context, status int, message string, err error) {
-    wrappedErr := errors.WithStack(err) // Envuelve el error con stack trace
-    stackTrace := string(debug.Stack()) // Captura el stack trace completo
-    c.Set("error", fmt.Sprintf("%v\n%s", message + " | " + wrappedErr.Error(), stackTrace))
-    c.JSON(status, gin.H{
-        "error":   true,
-        "message": message ,
-    })
+// func Error(c *gin.Context, status int, message string, err error) {
+//     // wrappedErr := errors.WithStack(err) // Envuelve el error con stack trace
+//     stackTrace := string(debug.Stack()) // Captura el stack trace completo
+//     c.Set("error", fmt.Sprintf("%v\n%s", message + " | " + err.Error(), stackTrace))
+//     c.JSON(status, gin.H{
+//         "error":   true,
+//         "message": message ,
+//     })
+// }
+
+func WrapError(err error) error {
+	if err == nil {
+		return nil
+	}
+	return errors.Wrap(err, "an error occurred")
 }
 
-func ErrorStatusBadRequest(c *gin.Context, message string, err error) {
-    Error(c, StatusBadRequest, message, err)
+func NewErrorResponse(statusCode int, message string, err error) *ErrorResponse {
+    return &ErrorResponse{
+        Status:  statusCode,
+        Message: message,
+        Error:   err,
+    }
 }
 
-func ErrorStatusUnauthorized(c *gin.Context, message string, err error) {
-    Error(c, StatusUnauthorized, message, err)
+func NewStatusResponse(statusCode int, message string, data interface{})*APIResponse {
+    return &APIResponse{
+        Status: statusCode,
+        Message:    message,
+        Data:        data,
+    }
 }
 
-func ErrorStatusForbidden(c *gin.Context, message string, err error) {
-    Error(c, StatusForbidden, message, err)
+func ErrorStatusResponse(c *gin.Context, err *ErrorResponse) {
+	Error(c, err.Status, err.Message, err.Error)
 }
 
-func ErrorStatusNotFound(c *gin.Context, message string, err error) {
-    Error(c, StatusNotFound, message, err)
+func ErrorStatus(c *gin.Context, statusCode int, message string, err error) {
+	Error(c, statusCode, message, err)
 }
 
-func ErrorStatusConflict(c *gin.Context, message string, err error) {
-    Error(c, StatusConflict, message, err)
+
+
+func SuccessStatus(c *gin.Context, statusCode int, message string, data interface{}) {
+    Success(c, statusCode, message, data)
 }
-
-func ErrorStatusPayloadTooLarge(c *gin.Context, message string, err error) {
-    Error(c, StatusPayloadTooLarge, message, err)
-}
-
-func ErrorStatusUnsupportedMedia(c *gin.Context, message string, err error) {
-    Error(c, StatusUnsupportedMedia, message, err)
-}
-
-func ErrorStatusInternalServer(c *gin.Context, message string, err error) {
-    Error(c, StatusInternalServer, message, err)
-}
-
-// Status codes
-
 
 
 const (
