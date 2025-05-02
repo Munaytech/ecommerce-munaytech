@@ -52,6 +52,7 @@ func New(cfg *config.Config) *Server {
 func (s *Server) routes() {
     api := s.engine.Group(s.config.Prefix)
     routes.RegisterCoreRoutes(api, s.db)
+    routes.RegisterProductRoutes(api, s.db)
 }
 
 func (s *Server) Run() error {

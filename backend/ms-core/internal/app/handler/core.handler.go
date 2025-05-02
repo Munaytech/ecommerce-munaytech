@@ -12,19 +12,19 @@ import (
 )
 
 type CoreHandler struct {
-	coreService *service.CoreService
+	service *service.CoreService
 }
 
 func NewCoreHandler(db *sqlx.DB)  *CoreHandler {
 	repo := repository.NewCoreRepository(db)
     svc := service.NewCoreService(repo)
-	return &CoreHandler{coreService: svc}
+	return &CoreHandler{service: svc}
 }
 
 
 func (h *CoreHandler) TestCore(c *gin.Context) {
-	var core entity.CoreEntity
-	if err := h.coreService.TestService(); err != nil {
+	var core entity.ProductEntity
+	if err := h.service.TestService(); err != nil {
 		utils.ErrorStatusResponse(c, err)
 		return
 	}

@@ -6,23 +6,23 @@ import (
 )
 
 type CoreService struct {
-	coreRepo *repository.CoreRepository
+	repo *repository.CoreRepository
 }
 
 
-func NewCoreService(userRepo *repository.CoreRepository) *CoreService {
-	return &CoreService{coreRepo: userRepo}
+func NewCoreService(repo *repository.CoreRepository) *CoreService {
+	return &CoreService{repo: repo}
 }
 
 func (s *CoreService) Trx(fn func() *utils.ErrorResponse) *utils.ErrorResponse {
-	if err := s.coreRepo.BeginTransaction(); err != nil {
+	if err := s.repo.BeginTransaction(); err != nil {
 		return utils.NewErrorResponse(utils.StatusInternalServer, "Error al iniciar transacción", err)
 	}
 
 	rollback := true
 	defer func() {
 		if rollback {
-			_ = s.coreRepo.RollbackTransaction()
+			_ = s.repo.RollbackTransaction()
 		}
 	}()
 
@@ -31,7 +31,7 @@ func (s *CoreService) Trx(fn func() *utils.ErrorResponse) *utils.ErrorResponse {
 		return errResp
 	}
 
-	if err := s.coreRepo.CommitTransaction(); err != nil {
+	if err := s.repo.CommitTransaction(); err != nil {
 		return utils.NewErrorResponse(utils.StatusInternalServer, "Error al confirmar transacción", err)
 	}
 
@@ -41,7 +41,7 @@ func (s *CoreService) Trx(fn func() *utils.ErrorResponse) *utils.ErrorResponse {
 
 func (s *CoreService) TestService() *utils.ErrorResponse { return s.Trx(func() *utils.ErrorResponse {
 	var valores []int
-	if err := s.coreRepo.TestRepository(&valores); err != nil {
+	if err := s.repo.TestRepository(&valores); err != nil {
 		return utils.NewErrorResponse(utils.StatusInternalServer, "Error en el repositorio", err)
 	}
 

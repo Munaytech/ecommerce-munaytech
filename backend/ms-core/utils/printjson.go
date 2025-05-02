@@ -16,22 +16,18 @@ func PrintJSON(v interface{}) {
 		line = 0
 	}
 
-	// Solo el nombre del archivo, sin path completo
 	filename := path.Base(file)
-
-	// Tipo del valor
 	typeName := reflect.TypeOf(v).String()
 
-	// Intentar convertir a JSON si es estructurado
 	jsonData, err := json.Marshal(v)
 	if err == nil && (reflect.TypeOf(v).Kind() == reflect.Struct || reflect.TypeOf(v).Kind() == reflect.Map || reflect.TypeOf(v).Kind() == reflect.Slice) {
-		fmt.Printf("📌 %s (%s:%d): %s\n", typeName, filename, line, string(jsonData))
+		fmt.Printf("📌 %s:%d | %s\n", filename, line, string(jsonData))
 		return
 	}
 
-	// Valor primitivo o no estructurable
-	fmt.Printf("📌 %s (%s:%d): %v\n", typeName, filename, line, v)
+	fmt.Printf("📌 %s:%d | type: %s\n%v\n", filename, line, typeName, v)
 }
+
 
 
 // package utils
