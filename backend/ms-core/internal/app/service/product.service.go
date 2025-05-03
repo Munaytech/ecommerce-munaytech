@@ -41,7 +41,7 @@ func (s *ProductService) Trx(fn func() *utils.ErrorResponse) *utils.ErrorRespons
 	return nil
 }
 
-func (s *ProductService) ProductId(Product *entity.ProductEntity, Variant *[]entity.VariantTypeEntity, req request.RequestEntity) *utils.ErrorResponse { return s.Trx(func() *utils.ErrorResponse {
+func (s *ProductService) ProductId(Product *entity.ProductEntity, Variant *[]entity.VariantTypeEntity, Rating *[]entity.ProductRatingEntity, req request.RequestEntity) *utils.ErrorResponse { return s.Trx(func() *utils.ErrorResponse {
 	if err := s.repo.ProductId(Product, req); err != nil {
 		return utils.NewErrorResponse(utils.StatusInternalServer, "Error en el repositorio", err)
 	}
@@ -49,12 +49,15 @@ func (s *ProductService) ProductId(Product *entity.ProductEntity, Variant *[]ent
 	if err := s.repo.ProductIdAll(Product); err != nil {
 		return utils.NewErrorResponse(utils.StatusInternalServer, "Error en el repositorio", err)
 	}
+
+	if err := s.repo.ProductIdRating(Rating, *Product.Idproduct); err != nil {
+		return utils.NewErrorResponse(utils.StatusInternalServer, "Error en el repositorio", err)
+	}
+
 	var VariantValueEntities []entity.VariantValueEntity
 	if err := s.repo.ProductTypeVariants(&VariantValueEntities, *Product.Idproductbase); err != nil {
 		return utils.NewErrorResponse(utils.StatusInternalServer, "Error en el repositorio", err)
 	}
-
-	utils.PrintJSON(VariantValueEntities)
 
 	evalsMap := make(map[int]*entity.VariantTypeEntity)
 	for _, row := range VariantValueEntities {
@@ -87,9 +90,6 @@ func (s *ProductService) ProductId(Product *entity.ProductEntity, Variant *[]ent
 	for _, eval := range evalsMap {
 		*Variant = append(*Variant, *eval)
 	}
-
-
-	utils.PrintJSON(Product)
 
 	return nil
 

@@ -25,7 +25,7 @@ func PrintJSON(v interface{}) {
 		return
 	}
 
-	fmt.Printf("📌 %s:%d | type: %s\n%v\n", filename, line, typeName, v)
+	fmt.Printf("📌 %s:%d | type: %s | %v\n", filename, line, typeName, v)
 }
 
 

@@ -36,24 +36,26 @@ func (h *ProductHandler) ProductId(c *gin.Context) {
 
 	var req request.RequestEntity
 	var variant []entity.VariantTypeEntity
+	var rating []entity.ProductRatingEntity
 
 	if err := c.ShouldBindJSON(&req); err != nil {
 		utils.ErrorStatus(c, utils.StatusBadRequest, "Datos inválidos", utils.WrapError(err))
 		return
 	}
-	utils.PrintJSON(req)
 	var Product entity.ProductEntity
-	if err := h.service.ProductId(&Product, &variant, req); err != nil {
+	if err := h.service.ProductId(&Product, &variant, &rating, req); err != nil {
 		utils.ErrorStatusResponse(c, err)
 		return
 	}
 
-	utils.PrintJSON(Product)
 
 	var data = map[string]interface{}{}
 
 	data["product"] = Product
 	data["variant"] = variant
+	data["rating"] = rating
+	data["description"] = Product.Description
+	data["urlparams"] = Product.Urlparams
 	
 	utils.SuccessStatus(c, utils.StatusCreated, "Registro Exitoso", data)
 }
