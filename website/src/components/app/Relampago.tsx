@@ -75,7 +75,7 @@ export const Relampago = () => {
   ];
 
   return (
-    <div className="w-full max-w-[1500px] px-4 md:mx-auto relative">
+    <div className="w-full max-w-[1500px] px-4 md:mx-auto relative mb-8">
       <div className="flex items-center  mb-4">
         <FlashIcon />
         <p className="text-[25px] leading-9 font-semibold text-secundary">

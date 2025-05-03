@@ -1,23 +1,27 @@
 import React from "react";
+import { Info } from "lucide-react"; // opcional, usa cualquier ícono que tengas
 
-export const Description = () => {
+export const Description = ({ description = "" }: { description: string }) => {
+  const hasContent = description?.trim() !== "" && description !== null;
+
   return (
     <div className="p-4">
-      <h2 className="text-xl font-semibold">Specification:</h2>
-      <p>
-        <strong>Brand:</strong> Beats
-      </p>
-      <p>
-        <strong>Model:</strong> S450
-      </p>
-      <p>Wireless Bluetooth Headset</p>
-      <p>
-        <strong>FM Frequency Response:</strong> 87.5 – 108 MHz
-      </p>
-      <p>
-        <strong>Feature:</strong> FM Radio, Card Supported (Micro SD / TF)
-      </p>
-      <p>Made in China</p>
+      {hasContent ? (
+        <div
+          className="description text-gray-800 leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: description }}
+        ></div>
+      ) : (
+        <div className="flex flex-col items-center justify-center text-center text-gray-500 py-10 border rounded-lg shadow-sm bg-gray-50">
+          <Info className="w-10 h-10 mb-2 text-primary" />
+          <p className="text-lg font-medium">
+            Este producto aún no tiene descripción
+          </p>
+          <p className="text-sm text-gray-400">
+            Consulta los detalles con el vendedor
+          </p>
+        </div>
+      )}
     </div>
   );
 };

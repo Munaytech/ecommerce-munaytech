@@ -47,7 +47,7 @@ export const Categoria = () => {
   ];
 
   return (
-    <div className="w-full max-w-[1500px] mx-auto px-4 relative mt-10">
+    <div className="w-full max-w-[1500px] mx-auto px-4 relative mb-10">
       <div className="flex items-center  mb-4">
         <CategoriaIcon />
         <p className="text-[25px] leading-9 font-semibold text-secundary">

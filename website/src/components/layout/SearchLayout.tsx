@@ -15,7 +15,7 @@ import { Menu } from "lucide-react";
 export const SearchLayout = () => {
   const [isFocused, setIsFocused] = useState(false);
   return (
-    <div className="max-w-[1500px] m-auto px-6 text-white py-2 flex justify-between items-center  ">
+    <div className="max-w-[1500px]  w-full mx-auto px-6 text-white py-2 flex justify-between items-center  ">
       <div className="md:hidden">
         <MenuIcon />
       </div>

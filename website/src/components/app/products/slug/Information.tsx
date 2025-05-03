@@ -7,9 +7,50 @@ import StarRating from "@/shared/components/stars/Stars";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export const Information = () => {
+interface InformationProps {
+  product: any;
+  options: any[];
+  selectedVariants: Record<string, string>;
+  onVariantChange: (name: string, value: string) => void;
+}
+
+export const Information = ({
+  product = null,
+  options = [],
+  selectedVariants,
+  onVariantChange,
+}: InformationProps) => {
   const [selectedImage, setSelectedImage] = useState(0);
   const sliderRef = useRef<Slider>(null);
+
+  if (product === null) {
+    product = {
+      idproduct: 1,
+      idproductbase: 1,
+      slugproduct: null,
+      titleproduct: "Mapple Earphones",
+      description: "celular nuevo",
+      priceproduct: "$300.99",
+      varianttype: null,
+    };
+  }
+
+  if (options === null) {
+    options = [
+      {
+        idvariantvalue: 1,
+        name: "Color",
+        variantvalue: [
+          {
+            idvariantvalue: 1,
+            idvarianttype: null,
+            value: "Red",
+            name: null,
+          },
+        ],
+      },
+    ];
+  }
 
   const images = [
     "/images/image1.png",
@@ -28,10 +69,11 @@ export const Information = () => {
     beforeChange: (oldIndex: number, newIndex: number) =>
       setSelectedImage(newIndex),
   };
+
   return (
     <div className="max-w-[1500px] mx-auto grid grid-cols-2 gap-8 p-8 items-start">
       {/* Image Slider */}
-      <div className="col-span-1 flex flex-col items-center">
+      <div className="col-span-2 md:col-span-1 flex flex-col items-center">
         <Slider ref={sliderRef} {...settings} className="w-full max-w-[600px]">
           {images.map((img, index) => (
             <div
@@ -76,49 +118,45 @@ export const Information = () => {
       </div>
 
       {/* Product Details */}
-      <div className="col-span-1">
+      <div className="col-span-2 md:col-span-1">
         <h2 className="text-3xl  text-secundary font-semibold">
-          Mapple Earphones
+          {product.titleproduct}
         </h2>
         <div className="flex items-center my-2">
           <span className="text-sm text-secundary mr-2">Rated:</span>
-          <StarRating rating={4.1} />
-          <span className="ml-2">(4.1)</span>
+          <StarRating rating={product?.rating} />
+          <span className="ml-2">{product?.rating}</span>
         </div>
 
         <div className="my-4">
-          <p className="text-sm font-medium text-secundary mr-2 mb-2">Option</p>
-          <div className="flex gap-2">
-            <button className="rounded-lg border border-[#DAE1E7] text-secundary px-3 py-2 hover:bg-gray-200">
-              Option 1
-            </button>
-            <button className="rounded-lg border border-[#DAE1E7] text-secundary px-3 py-2 hover:bg-gray-200">
-              Option 1
-            </button>
-            <button className="rounded-lg border border-[#DAE1E7] text-secundary px-3 py-2 hover:bg-gray-200">
-              Option 1
-            </button>
-            <button className="rounded-lg border border-[#DAE1E7] text-secundary px-3 py-2 hover:bg-gray-200">
-              Option 1
-            </button>
-          </div>
+          {options.map((option: any, index: number) => (
+            <div key={index} className="my-4">
+              <p className="text-sm font-medium text-secundary mr-2 mb-2">
+                {option.name}
+              </p>
+              <div className="flex gap-2">
+                {option.variantvalue.map((variant: any, idx: number) => (
+                  <button
+                    key={idx}
+                    onClick={() => onVariantChange(option.name, variant.value)}
+                    className={`rounded-lg border px-3 py-2 text-secundary ${
+                      selectedVariants[option.name] === variant.value
+                        ? "border-red-500 bg-red-100"
+                        : "border-[#DAE1E7] hover:bg-gray-200"
+                    }`}
+                    // className="rounded-lg border border-[#DAE1E7] text-secundary px-3 py-2 hover:bg-gray-200"
+                  >
+                    {variant.value}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className="my-8">
-          <p className="text-sm font-medium text-secundary mr-2 mb-2">Type</p>
-          <div className="flex gap-2">
-            <button className="rounded-lg border border-[#DAE1E7] text-secundary px-3 py-2 hover:bg-gray-200">
-              Type 1
-            </button>
-            <button className="rounded-lg border border-[#DAE1E7] text-secundary px-3 py-2 hover:bg-gray-200">
-              Type 2
-            </button>
-            <button className="rounded-lg border border-[#DAE1E7] text-secundary px-3 py-2 hover:bg-gray-200">
-              Type 3
-            </button>
-          </div>
-        </div>
-        <p className="text-2xl font-semibold text-primary">$199.00</p>
+        <p className="text-2xl font-semibold text-primary">
+          {product.priceproduct}
+        </p>
         <p className="text-secundary">Stock Available</p>
         <button className="bg-primary rounded-xl text-white px-10 py-4 mt-4 mb-6">
           Add to Cart

@@ -46,7 +46,7 @@ export default function DesplegableLayout({
   // };
 
   return (
-    <div className="relative bg-white " ref={menuRef}>
+    <div className="relative  " ref={menuRef}>
       {/* Botón principal */}
       <div
         onClick={toggle}

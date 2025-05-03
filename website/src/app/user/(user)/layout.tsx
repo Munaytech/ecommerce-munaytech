@@ -13,10 +13,10 @@ export default function Layout({
 }>) {
   return (
     <div
-      className={`${inter.className} min-h-screen flex flex-col bg-[#f2f2f23b] font-publicSans`}
+      className={`${inter.className}  flex flex-col bg-[#f2f2f23b] font-publicSans`}
     >
       {/* Contenedor limitado a 1600px */}
-      <div className="w-full max-w-[1600px] mx-auto flex min-h-screen bg-gray-50">
+      <div className="w-full max-w-[1600px] mx-auto flex bg-gray-50">
         {/* Sidebar a la izquierda */}
         <div className="w-72 p-4">
           <Navigation />
@@ -27,8 +27,6 @@ export default function Layout({
           <main className="flex-1 text-black">{children}</main>
         </div>
       </div>
-
-      <footer className="text-center p-4 bg-gray-200">© 2025 Munay Tech</footer>
     </div>
   );
 }

@@ -36,7 +36,7 @@ export const Rating = () => {
     },
   ];
   return (
-    <div className="w-full max-w-[1500px] mx-auto relative mt-10 px-4">
+    <div className="w-full max-w-[1500px] mx-auto relative px-4 mb-10">
       <div className="flex items-center  mb-4">
         <InsigniaIcon />
         <p className="text-[25px] leading-9 font-semibold text-secundary">

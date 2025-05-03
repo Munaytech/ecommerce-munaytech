@@ -4,6 +4,7 @@ import "@/styles/global.css";
 import { Cabecera } from "@/components/layout/Cabecera";
 import { SearchLayout } from "@/components/layout/SearchLayout";
 import { CategoriasLayout } from "@/components/layout/CategoriasLayout";
+import Footer from "@/components/layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,15 +27,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-publicSans background-gradient  `}
       >
-
-        <Cabecera />
-        <SearchLayout />
-        <CategoriasLayout />
-        {children}
+        <main className="w-full mx-auto flex flex-col min-h-screen bg-gray-50">
+          <Cabecera />
+          <SearchLayout />
+          <CategoriasLayout />
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

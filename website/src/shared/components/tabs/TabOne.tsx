@@ -39,9 +39,9 @@ export const TabOne = ({ tabs, children }: TabsProps) => {
 
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
-    setTimeout(() => {
-      tabRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
+    // setTimeout(() => {
+    //   tabRef.current?.scrollIntoView({ behavior: "smooth" });
+    // }, 100);
   };
 
   return (
