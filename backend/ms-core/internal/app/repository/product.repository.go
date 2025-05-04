@@ -150,6 +150,36 @@ func (r *ProductRepository) ProductTypeVariants(Variant *[]entity.VariantValueEn
 	return utils.WrapError(err)
 }
 
+func (r *ProductRepository) GetCategoryAll(Category *[]entity.CategoryEntity) error {
+	query := `
+		WITH RECURSIVE category_tree AS (
+			SELECT
+				id_category,
+				name_category,
+				parent_id_category,
+				0 AS level,
+				CAST(id_category AS TEXT) AS path_id_category,
+				name_category AS full_path
+			FROM munay_ecommerce.category
+			WHERE parent_id_category IS NULL AND state = true
+			UNION ALL
+			SELECT
+				c.id_category,
+				c.name_category,
+				c.parent_id_category,
+				ct.level + 1 AS level,
+				ct.path_id_category || '.' || c.id_category AS path_id,
+				ct.full_path || ' > ' || c.name_category AS full_path
+			FROM munay_ecommerce.category c
+			INNER JOIN category_tree ct ON c.parent_id_category = ct.id_category
+		)
+		SELECT *
+		FROM category_tree
+		ORDER BY path_id_category
+	`
+	err := r.Tx.Select(Category, query)
+	return utils.WrapError(err)
+}
 
 
 func (r *ProductRepository) IgnoreNoRows(err error) error {

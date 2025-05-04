@@ -95,6 +95,62 @@ func (s *ProductService) ProductId(Product *entity.ProductEntity, Variant *[]ent
 
 })}
 
+func (s *ProductService) GetCategoryAll(Category *[]entity.CategoryEntity) *utils.ErrorResponse {
+	return s.Trx(func() *utils.ErrorResponse {
+		var flat []entity.CategoryEntity
+
+		if err := s.repo.GetCategoryAll(&flat); err != nil {
+			return utils.NewErrorResponse(utils.StatusInternalServer, "Error en el repositorio", err)
+		}
+
+		type CategoryNode struct {
+			*entity.CategoryEntity
+			Children []*CategoryNode `json:"children,omitempty"`
+		}
+
+		// Mapa temporal por ID
+		nodeMap := make(map[int]*CategoryNode)
+
+		for i := range flat {
+			if flat[i].Idcategory != nil {
+				nodeMap[*flat[i].Idcategory] = &CategoryNode{CategoryEntity: &flat[i]}
+			}
+		}
+
+		var roots []*CategoryNode
+
+		// Construcción jerárquica
+		for _, node := range nodeMap {
+			if node.Parentidcategory == nil {
+				roots = append(roots, node)
+			} else if parentNode, ok := nodeMap[*node.Parentidcategory]; ok {
+				parentNode.Children = append(parentNode.Children, node)
+			}
+		}
+
+		// Convertir recursivamente a []entity.CategoryEntity con hijos
+		var convert func(*CategoryNode) entity.CategoryEntity
+		convert = func(n *CategoryNode) entity.CategoryEntity {
+			result := *n.CategoryEntity
+			for _, child := range n.Children {
+				childEntity := convert(child)
+				result.Children = append(result.Children, &childEntity)
+			}
+			return result
+		}
+
+		var finalResult []entity.CategoryEntity
+		for _, r := range roots {
+			finalResult = append(finalResult, convert(r))
+		}
+
+		*Category = finalResult
+		return nil
+	})
+}
+
+
+
 func (s *ProductService) TestService() *utils.ErrorResponse { return s.Trx(func() *utils.ErrorResponse {
 	var valores []int
 	if err := s.repo.TestRepository(&valores); err != nil {

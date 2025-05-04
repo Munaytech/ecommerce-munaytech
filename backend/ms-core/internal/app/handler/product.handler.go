@@ -61,6 +61,23 @@ func (h *ProductHandler) ProductId(c *gin.Context) {
 }
 
 
+func (h *ProductHandler) GetCategoryAll(c *gin.Context) {
+
+	
+	var Category []entity.CategoryEntity
+	if err := h.service.GetCategoryAll(&Category); err != nil {
+		utils.ErrorStatusResponse(c, err)
+		return
+	}
+
+	var data = map[string]interface{}{}
+
+	data["category"] = Category
+	
+	utils.SuccessStatus(c, utils.StatusSuccess, "", data)
+}
+
+
 func (h *ProductHandler) ProductId2(c *gin.Context) {
 	var core entity.CoreEntity
 	if err := h.service.TestService(); err != nil {

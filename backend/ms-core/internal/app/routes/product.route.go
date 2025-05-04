@@ -15,5 +15,6 @@ func RegisterProductRoutes(r *gin.RouterGroup, db *sqlx.DB) {
 		product.GET("/test", productHandler.TestCore)
 		product.GET("/productids", productHandler.ProductId)
 		product.POST("/productid", productHandler.ProductId)
+		product.GET("/categoryall", productHandler.GetCategoryAll)
 	}
 }

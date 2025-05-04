@@ -38,9 +38,9 @@ func Success(c *gin.Context, status int, message string, data interface{}) {
     c.JSON(status, APIResponse{
         Status:  status,
         Message: message,
-        Data:    data,
         Success: true,
         Ok: true,
+        Data:    data,
     })
 }
 func Error(c *gin.Context, status int, message string, err error) {
@@ -99,17 +99,16 @@ func SuccessStatus(c *gin.Context, statusCode int, message string, data interfac
     Success(c, statusCode, message, data)
 }
 
-
 const (
-    StatusSuccess          = http.StatusOK                  // 200
-    StatusCreated          = http.StatusCreated            // 201
-    StatusNoContent        = http.StatusNoContent          // 204
-    StatusBadRequest       = http.StatusBadRequest         // 400
-    StatusUnauthorized     = http.StatusUnauthorized       // 401
-    StatusForbidden        = http.StatusForbidden         // 403
-    StatusNotFound         = http.StatusNotFound           // 404
-    StatusConflict         = http.StatusConflict           // 409
-    StatusPayloadTooLarge  = http.StatusRequestEntityTooLarge // 413
-    StatusUnsupportedMedia = http.StatusUnsupportedMediaType  // 415
-    StatusInternalServer   = http.StatusInternalServerError // 500
+    StatusSuccess          = http.StatusOK                   // 200 OK - Petición exitosa
+    StatusCreated          = http.StatusCreated              // 201 Created - Recurso creado exitosamente
+    StatusNoContent        = http.StatusNoContent            // 204 No Content - Sin contenido para retornar
+    StatusBadRequest       = http.StatusBadRequest           // 400 Bad Request - Datos inválidos o sintaxis incorrecta
+    StatusUnauthorized     = http.StatusUnauthorized         // 401 Unauthorized - No autenticado o token inválido
+    StatusForbidden        = http.StatusForbidden            // 403 Forbidden - No autorizado para acceder
+    StatusNotFound         = http.StatusNotFound             // 404 Not Found - Recurso no encontrado
+    StatusConflict         = http.StatusConflict             // 409 Conflict - Conflicto con el estado actual del recurso
+    StatusPayloadTooLarge  = http.StatusRequestEntityTooLarge // 413 Payload Too Large - Cuerpo de petición muy grande
+    StatusUnsupportedMedia = http.StatusUnsupportedMediaType  // 415 Unsupported Media Type - Tipo de contenido no soportado
+    StatusInternalServer   = http.StatusInternalServerError   // 500 Internal Server Error - Error inesperado del servidor
 )
