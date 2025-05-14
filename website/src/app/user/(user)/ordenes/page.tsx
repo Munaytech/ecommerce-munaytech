@@ -1,6 +1,8 @@
-import { BagIcon } from "@/components/icons";
+"use client";
+import UserDrawer from "@/components/app/user/UserDrawer";
+import { BagIcon, MenuIcon } from "@/components/icons";
 import { getColorBackground, getColorText } from "@/shared/utils";
-import React from "react";
+import { useState } from "react";
 
 const data = [
   {
@@ -34,19 +36,31 @@ const data = [
 ];
 
 const Page = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
   return (
     <div className="text-secundary">
-      <div className="flex items-center justify-start font-semibold gap-x-4 mb-6 ">
-        <div className="bg-[#F3F5F9] px-2 py-1 rounded-xl">
-          <BagIcon />
+      <div className="flex items-center justify-between font-semibold gap-x-4 mb-6 ">
+        <div className="flex items-center justify-start gap-x-4">
+          <div className="bg-[#F3F5F9] px-2 py-1 rounded-xl">
+            <BagIcon />
+          </div>
+          <p className="text-2xl font-medium">Mis Ordenes</p>
         </div>
-        <p className="text-2xl font-medium">Mis Ordenes</p>
+        <div className="relative block md:hidden">
+          <button onClick={() => setDrawerOpen(true)} className="">
+            <MenuIcon />
+          </button>
+          <UserDrawer
+            isOpen={drawerOpen}
+            onClose={() => setDrawerOpen(false)}
+          />
+        </div>
       </div>
       <div>
         {data.map((order, index) => (
           <div key={index} className="">
-            <div className="grid grid-cols-4 text-secondary borderone py-4 px-6 mb-4">
-              <div className="col-span-1 text-base text-left">
+            <div className="grid grid-cols-2 md:grid-cols-4 text-sm text-secondary borderone py-4 px-2 md:px-6 mb-4">
+              <div className="col-span-1 text-base text-left truncate overflow-hidden whitespace-nowrap">
                 <p>{order.ordernum}</p>
               </div>
               <div className="col-span-1 text-center">

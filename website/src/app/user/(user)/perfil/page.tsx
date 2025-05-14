@@ -1,7 +1,9 @@
-import { BagIcon, ProfileIcon } from "@/components/icons";
+"use client";
+import UserDrawer from "@/components/app/user/UserDrawer";
+import { BagIcon, MenuIcon, ProfileIcon } from "@/components/icons";
 import { getColorBackground, getColorText } from "@/shared/utils";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 const data = [
   {
@@ -35,18 +37,30 @@ const data = [
 ];
 
 const Page = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
   return (
     <div className="text-secundary">
-      <div className="flex items-center justify-start font-semibold gap-x-4 mb-6 ">
-        <div className="bg-[#F3F5F9] px-2 py-1 rounded-xl">
-          <ProfileIcon />
+      <div className="flex items-center justify-between font-semibold gap-x-4 mb-6 ">
+        <div className="flex items-center justify-start gap-x-4">
+          <div className="bg-[#F3F5F9] px-2 py-1 rounded-xl">
+            <ProfileIcon />
+          </div>
+          <p className="text-2xl font-medium">Mi Perfil</p>
         </div>
-        <p className="text-2xl font-medium">Mi Perfil</p>
+        <div className="relative block md:hidden">
+          <button onClick={() => setDrawerOpen(true)} className="">
+            <MenuIcon />
+          </button>
+          <UserDrawer
+            isOpen={drawerOpen}
+            onClose={() => setDrawerOpen(false)}
+          />
+        </div>
       </div>
       <div className="text-secundary">
         <div className="">
-          <div className="grid grid-cols-9 text-secondary mb-4">
-            <div className="col-span-5 borderone flex items-center justify-between  mr-3 px-6">
+          <div className="grid grid-cols-2 gap-y-4 md:grid-cols-9 text-secondary mb-4">
+            <div className="col-span-2 md:col-span-5 borderone py-8 flex items-center justify-between  mr-3 px-6">
               <div className="flex items-center justify-center gap-x-4">
                 <div>
                   <Image
@@ -86,26 +100,26 @@ const Page = () => {
           </div>
         </div>
         <div className="">
-          <div className="grid grid-cols-11 text-secondary  borderone py-4 px-6 mb-4">
-            <div className="col-span-2   text-left p-6 mx-3">
+          <div className="grid grid-cols-1 md:grid-cols-11 text-secondary  borderone py-4 px-6 mb-4">
+            <div className="col-span-1 md:col-span-2   text-left p-6 mx-3">
               <p className="text-[#7D879C]  text-sm ">Nombres</p>
               <p className="text-secundary text-sm ">Nick</p>
             </div>
-            <div className="col-span-2   text-left p-6 mx-3">
+            <div className="col-span-1 md:col-span-2   text-left p-6 mx-3">
               <p className="text-[#7D879C]  text-sm">Apellidos</p>
               <p className="text-secundary text-sm ">DuBuque</p>
             </div>
-            <div className="col-span-3   text-left p-6 mx-3">
+            <div className="col-span-1 md:col-span-3   text-left p-6 mx-3">
               <p className="text-[#7D879C]  text-sm">Email</p>
               <p className="text-secundary text-sm ">
                 Jayden.Gislason78@gmail.com
               </p>
             </div>
-            <div className="col-span-2   text-left p-6 mx-3">
+            <div className="col-span-1 md:col-span-2   text-left p-6 mx-3">
               <p className="text-[#7D879C]  text-sm">Telefono</p>
               <p className="text-secundary text-sm ">(445) 653-3771 x985</p>
             </div>
-            <div className="col-span-2   text-left p-6 mx-3">
+            <div className="col-span-1 md:col-span-2   text-left p-6 mx-3">
               <p className="text-[#7D879C]  text-sm">Nacimiento</p>
               <p className="text-secundary text-sm ">25 Apr, 1996</p>
             </div>

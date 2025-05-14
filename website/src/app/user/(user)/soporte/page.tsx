@@ -1,7 +1,9 @@
-import { BagIcon, FlechaIcon, SoporteIcon } from "@/components/icons";
+"use client";
+import UserDrawer from "@/components/app/user/UserDrawer";
+import { BagIcon, FlechaIcon, MenuIcon, SoporteIcon } from "@/components/icons";
 import { getColorBackground, getColorText } from "@/shared/utils";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const data = [
   {
@@ -61,13 +63,25 @@ const data = [
 ];
 
 const Page = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
   return (
     <div className="text-secundary">
-      <div className="flex items-center justify-start font-semibold gap-x-4 mb-6 ">
-        <div className="bg-[#F3F5F9] px-2 py-1 rounded-xl">
-          <SoporteIcon />
+      <div className="flex items-center justify-between font-semibold gap-x-4 mb-6 ">
+        <div className="flex items-center justify-start gap-x-4">
+          <div className="bg-[#F3F5F9] px-2 py-1 rounded-xl">
+            <SoporteIcon />
+          </div>
+          <p className="text-2xl font-medium">Soporte</p>
         </div>
-        <p className="text-2xl font-medium">Soporte</p>
+        <div className="relative block md:hidden">
+          <button onClick={() => setDrawerOpen(true)} className="">
+            <MenuIcon />
+          </button>
+          <UserDrawer
+            isOpen={drawerOpen}
+            onClose={() => setDrawerOpen(false)}
+          />
+        </div>
       </div>
       <div>
         {data.map((ticket, index) => (
@@ -100,8 +114,13 @@ const Page = () => {
                       {ticket.ticketstate}
                     </p>
                     <p className="text-[#7D879C]">{ticket.ticketdate}</p>
-                    <p className="text-[#7D879C]">{ticket.tickettipo}</p>
+                    <p className="text-[#7D879C] hidden md:block">
+                      {ticket.tickettipo}
+                    </p>
                   </div>
+                  <p className="text-[#7D879C] md:hidden mt-2">
+                    {ticket.tickettipo}
+                  </p>
                 </div>
                 <Link href={"/user/soporte/1"}>
                   <button className="rounded-2xl px-2 py-2 hover:bg-gray-100">

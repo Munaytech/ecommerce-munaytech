@@ -18,7 +18,7 @@ export default function Layout({
       {/* Contenedor limitado a 1600px */}
       <div className="w-full max-w-[1600px] mx-auto flex bg-gray-50">
         {/* Sidebar a la izquierda */}
-        <div className="w-72 p-4">
+        <div className="w-72 p-4 hidden md:block ">
           <Navigation />
         </div>
 
