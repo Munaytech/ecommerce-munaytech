@@ -1,4 +1,4 @@
-import { BagIcon } from "@/shared/icons";
+import { BagIcon } from "@/components/icons";
 import React from "react";
 
 const page = () => {

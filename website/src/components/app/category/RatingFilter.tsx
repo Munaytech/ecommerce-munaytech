@@ -1,6 +1,6 @@
 "use client";
 
-import StarRating from "@/shared/components/stars/Stars";
+import StarRating from "@/components/shared/stars/Stars";
 import React, { useState } from "react";
 
 const RatingFilter = () => {

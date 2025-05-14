@@ -1,4 +1,4 @@
-import StarRating from "@/shared/components/stars/Stars";
+import StarRating from "@/components/shared/stars/Stars";
 import { formatDateToPeru } from "@/shared/utils";
 import Image from "next/image";
 import React from "react";

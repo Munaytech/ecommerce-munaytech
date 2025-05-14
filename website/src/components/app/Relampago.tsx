@@ -4,8 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { CruzIcon, EyeIcon, FlashIcon, HeartIcon } from "@/shared/icons";
-import StarRating from "@/shared/components/stars/Stars";
+import { CruzIcon, EyeIcon, FlashIcon, HeartIcon } from "@/components/icons";
+import StarRating from "@/components/shared/stars/Stars";
 import { productosList } from "@/data/products";
 
 export const Relampago = () => {

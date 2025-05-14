@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { SwiperSlide } from "swiper/react";
-import { AnimationSwiper } from "@/shared/components/animation/AnimationSwiper";
+import { AnimationSwiper } from "@/components/shared/animation/AnimationSwiper";
 
 export const Oferta = () => {
   const ofertas = [
@@ -39,13 +39,21 @@ export const Oferta = () => {
                     Shop Now
                   </button>
                 </div>
-                <div className="relative col-span-3 md:col-span-2 h-[350px]">
+                <div className="relative flex items-center justify-center w-full col-span-3 md:col-span-2 h-[350px]">
                   <Image
+                    src={oferta.image}
+                    alt="hero"
+                    width={450}
+                    height={450}
+                    className="object-cover"
+                  />
+
+                  {/* <Image
                     src={oferta.image}
                     alt="hero"
                     fill
                     className="relative object-cover"
-                  />
+                  /> */}
                 </div>
               </div>
             </SwiperSlide>

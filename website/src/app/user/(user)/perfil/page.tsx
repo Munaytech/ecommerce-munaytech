@@ -1,4 +1,4 @@
-import { BagIcon, ProfileIcon } from "@/shared/icons";
+import { BagIcon, ProfileIcon } from "@/components/icons";
 import { getColorBackground, getColorText } from "@/shared/utils";
 import Image from "next/image";
 import React from "react";

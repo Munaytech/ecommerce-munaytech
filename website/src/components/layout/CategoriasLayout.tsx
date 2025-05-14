@@ -33,16 +33,17 @@ const menuList = [
     menuname: "Usuario",
     menuselection: [
       { label: "Perfil", link: "/user/perfil" },
-      { label: "Ajustes", link: "/" },
-      { label: "Info", link: "/" },
+      { label: "Soporte", link: "/user/soporte" },
+      { label: "Direcciones", link: "/user/direcciones" },
+      { label: "Ordenes", link: "/user/ordenes" },
     ],
   },
-  {
-    menuname: "Vendedor",
-    menuselection: [
-      { label: "Item1", link: "/" },
-      { label: "Item2", link: "/" },
-      { label: "Item2", link: "/" },
-    ],
-  },
+  // {
+  //   menuname: "Vendedor",
+  //   menuselection: [
+  //     { label: "Item1", link: "/" },
+  //     { label: "Item2", link: "/" },
+  //     { label: "Item2", link: "/" },
+  //   ],
+  // },
 ];

@@ -1,6 +1,6 @@
 "use client";
 
-import { TabOne } from "@/shared/components/tabs/TabOne";
+import { TabOne } from "@/components/shared/tabs/TabOne";
 // import { Tabs } from "@/components/Tabs"; // Importa el componente global
 import { Description } from "./Description";
 import { Reviews } from "./Reviews";

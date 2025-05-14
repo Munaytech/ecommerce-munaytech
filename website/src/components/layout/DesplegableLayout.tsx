@@ -1,8 +1,8 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { User, Settings, Info } from "lucide-react";
-import { FashionIcon } from "@/shared/icons/menu";
-import { OpcionIcon } from "@/shared/icons";
+import { FashionIcon } from "@/components/icons/menu";
+import { OpcionIcon } from "@/components/icons";
 import Link from "next/link";
 
 interface MenuData {

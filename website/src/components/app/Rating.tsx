@@ -1,4 +1,4 @@
-import { InsigniaIcon } from "@/shared/icons";
+import { InsigniaIcon } from "@/components/icons";
 import Image from "next/image";
 import React from "react";
 

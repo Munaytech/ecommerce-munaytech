@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Slider from "react-slick";
-import StarRating from "@/shared/components/stars/Stars";
+import StarRating from "@/components/shared/stars/Stars";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 

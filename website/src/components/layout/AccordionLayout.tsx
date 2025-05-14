@@ -1,8 +1,8 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { Home, User, Settings, Info, ChevronRight } from "lucide-react";
-import { FashionIcon } from "@/shared/icons/menu";
-import { CategoriaIcon, OpcionIcon } from "@/shared/icons";
+import { FashionIcon } from "@/components/icons/menu";
+import { CategoriaIcon, OpcionIcon } from "@/components/icons";
 
 interface MenuItem {
   icon?: React.ReactNode;

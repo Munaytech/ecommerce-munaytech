@@ -1,4 +1,4 @@
-import { Facebook, Instagram, SumaIcon, Twiter } from "@/shared/icons";
+import { Facebook, Instagram, SumaIcon, Twiter } from "@/components/icons";
 import React from "react";
 
 export const Cabecera = () => {

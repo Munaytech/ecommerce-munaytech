@@ -1,5 +1,5 @@
 "use client";
-import { CategoriaIcon } from "@/shared/icons";
+import { CategoriaIcon } from "@/components/icons";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -54,7 +54,7 @@ export const Categoria = () => {
           Top Categories
         </p>
       </div>
-      <div className="relative" >
+      <div className="relative">
         <Swiper
           modules={[Navigation]}
           navigation={{

@@ -3,7 +3,7 @@
 import React, { use, useEffect, useState } from "react";
 import { useSearchParams, useRouter, useParams } from "next/navigation";
 import { Information } from "@/components/app/products/slug/Information";
-import { EyeIcon } from "@/shared/icons";
+import { EyeIcon } from "@/components/icons";
 import { Eyelash } from "@/components/app/products/slug/Eyelash";
 import RequestPg from "@/lib/RequestPg";
 import Link from "next/link";

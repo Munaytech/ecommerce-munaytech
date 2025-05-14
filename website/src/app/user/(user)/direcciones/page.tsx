@@ -1,4 +1,4 @@
-import { BagIcon, FlechaIcon, ProfileIcon } from "@/shared/icons";
+import { BagIcon, FlechaIcon, ProfileIcon } from "@/components/icons";
 import { getColorBackground, getColorText } from "@/shared/utils";
 import Image from "next/image";
 import Link from "next/link";

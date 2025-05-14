@@ -1,4 +1,4 @@
-import { BagIcon } from "@/shared/icons";
+import { BagIcon } from "@/components/icons";
 import { getColorBackground, getColorText } from "@/shared/utils";
 import React from "react";
 
@@ -42,7 +42,7 @@ const Page = () => {
         </div>
         <p className="text-2xl font-medium">Mis Ordenes</p>
       </div>
-      <div >
+      <div>
         {data.map((order, index) => (
           <div key={index} className="">
             <div className="grid grid-cols-4 text-secondary borderone py-4 px-6 mb-4">

@@ -1,4 +1,4 @@
-import { BagIcon, FlechaIcon, SoporteIcon } from "@/shared/icons";
+import { BagIcon, FlechaIcon, SoporteIcon } from "@/components/icons";
 import { getColorBackground, getColorText } from "@/shared/utils";
 import Link from "next/link";
 import React from "react";

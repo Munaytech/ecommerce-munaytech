@@ -5,12 +5,12 @@ import {
   LupaIcon,
   MenuIcon,
   UserIcon,
-} from "@/shared/icons";
+} from "@/components/icons";
 import React, { useState } from "react";
-import { FashionIcon } from "@/shared/icons/menu/FashionIcon";
+import { FashionIcon } from "@/components/icons/menu/FashionIcon";
 import AccordionLayout from "./AccordionLayout";
 import Link from "next/link";
-import { LogoIcon } from "@/shared/icons/LogoIcon";
+import { LogoIcon } from "@/components/icons/LogoIcon";
 import { Menu } from "lucide-react";
 export const SearchLayout = () => {
   const [isFocused, setIsFocused] = useState(false);

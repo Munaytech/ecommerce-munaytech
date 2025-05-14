@@ -1,5 +1,5 @@
-import StarRating from "@/shared/components/stars/Stars";
-import { CruzIcon, EyeIcon, HeartIcon } from "@/shared/icons";
+import StarRating from "@/components/shared/stars/Stars";
+import { CruzIcon, EyeIcon, HeartIcon } from "@/components/icons";
 import Image from "next/image";
 import React from "react";
 
