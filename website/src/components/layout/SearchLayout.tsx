@@ -29,23 +29,20 @@ export const SearchLayout = () => {
           <LogoIcon />
         </Link>
       </div>
-      <div className="hidden md:block">
+      <div className="hidden md:block ">
         <div className="flex items-center w-full max-w-md">
           <div
             className="flex items-center w-full bg-gray-100 rounded-md border border-gray-300
         transition-colors hover:border-black focus-within:!border-red-500"
           >
-            <div className="">
+            <div className="px-2">
               <LupaIcon />
             </div>
             <input
               type="text"
               placeholder="Searching for..."
-              className="flex-1 py-2 bg-gray-100 outline-none placeholder-gray-400"
+              className="w-80 text-secundary flex-1 py-2 bg-gray-100 outline-none placeholder-gray-400"
             />
-            <div className="px-3 text-sm text-gray-500 cursor-pointer">
-              All Categories ▼
-            </div>
           </div>
         </div>
       </div>

@@ -27,11 +27,7 @@ export const CategoriasLayout = () => {
 const menuList = [
   {
     menuname: "Categorías",
-    menuselection: [
-      { label: "Perfil", link: "/" },
-      { label: "Ajustes", link: "/" },
-      { label: "Info", link: "/" },
-    ],
+    menuselection: [{ label: "Categoría", link: "/category" }],
   },
   {
     menuname: "Usuario",

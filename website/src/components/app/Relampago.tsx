@@ -6,73 +6,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { CruzIcon, EyeIcon, FlashIcon, HeartIcon } from "@/shared/icons";
 import StarRating from "@/shared/components/stars/Stars";
+import { productosList } from "@/data/products";
 
 export const Relampago = () => {
-  const productos = [
-    {
-      name: "iPhone 13 Pro Max",
-      price: "$108.00",
-      oldPrice: "$150.00",
-      discount: "28% off",
-      image: "/Link → image.png",
-    },
-    {
-      name: "iPhone 13 Pro Max",
-      price: "$108.00",
-      oldPrice: "$150.00",
-      discount: "28% off",
-      image: "/Link → image.png",
-    },
-    {
-      name: "iPhone 13 Pro Max",
-      price: "$108.00",
-      oldPrice: "$150.00",
-      discount: "28% off",
-      image: "/Link → image.png",
-    },
-    {
-      name: "iPhone 13 Pro Max",
-      price: "$108.00",
-      oldPrice: "$150.00",
-      discount: "28% off",
-      image: "/Link → image.png",
-    },
-    {
-      name: "iPhone 13 Pro Max",
-      price: "$108.00",
-      oldPrice: "$150.00",
-      discount: "28% off",
-      image: "/Link → image.png",
-    },
-    {
-      name: "iPhone 13 Pro Max",
-      price: "$108.00",
-      oldPrice: "$150.00",
-      discount: "28% off",
-      image: "/Link → image.png",
-    },
-    {
-      name: "Mi Led Smart Watch",
-      price: "$142.20",
-      oldPrice: "$180.00",
-      discount: "21% off",
-      image: "/Link → image.png",
-    },
-    {
-      name: "NikeCourt Zoom Vapor Cage",
-      price: "$187.50",
-      oldPrice: "$250.00",
-      discount: "25% off",
-      image: "/Link → image.png",
-    },
-    {
-      name: "Classic Rolex Watch",
-      price: "$297.50",
-      oldPrice: "$350.00",
-      discount: "15% off",
-      image: "/Link → image.png",
-    },
-  ];
+  const productos = productosList;
 
   return (
     <div className="w-full max-w-[1500px] px-4 md:mx-auto relative mb-8">

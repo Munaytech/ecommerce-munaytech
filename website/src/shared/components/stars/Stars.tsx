@@ -3,16 +3,20 @@ import React from "react";
 
 interface StarRatingProps {
   rating: number;
+  className?: string;
 }
 
-const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
+const StarRating: React.FC<StarRatingProps> = ({ rating, className }) => {
   const totalStars = 5; // Total de estrellas
   const fullStars = Math.floor(rating); // Número de estrellas llenas
   const fractionalPart = rating % 1; // Parte decimal del número
   const emptyStars = totalStars - fullStars - (fractionalPart > 0 ? 1 : 0); // Estrellas vacías
 
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
+    <div
+      style={{ display: "flex", alignItems: "center" }}
+      className={className}
+    >
       {/* Estrellas llenas */}
       {Array.from({ length: fullStars }, (_, i) => (
         <svg

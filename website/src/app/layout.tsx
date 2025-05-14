@@ -34,7 +34,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-publicSans background-gradient  `}
       >
-        <main className="w-full mx-auto flex flex-col min-h-screen bg-gray-50">
+        <main className="w-full mx-auto flex flex-col min-h-screen bg-white">
           <Cabecera />
           <SearchLayout />
           <CategoriasLayout />
